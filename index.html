@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Initials Compatibility Test</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 150px;
+            background-color: rgba(255, 192, 203, 0.795);
+        }
+
+        h1 {font-family: "Walter Turncoat", serif;
+            font-weight: 600;
+            font-style: normal;
+            color: rgb(187, 71, 135);
+        }
+
+        p {color: rgb(144, 67, 93);
+            font-family: "Walter Turncoat", serif;
+
+        }
+        #charInput1, #charInput2 {
+            font-family: "Walter Turncoat", serif;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 12px;
+            border: 2px solid #d480d3;
+            padding: 8px;
+            margin: 5px;
+            width: 50px;
+            text-align: center;
+            color: #7e4671  !important;
+            text-transform: capitalize;
+            text-decoration-line: none;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        #submitButton {
+            background-color: rgb(251, 247, 247);
+            font-size: 12px;
+            padding: 10px 15px;
+            border-radius: 50px;
+            border: none;
+            margin: 20px auto;
+            cursor: pointer;
+            font-family: "Walter Turncoat", serif;
+            font-weight: 400;
+            display: block;
+            color: #a02e85;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            }
+
+        #result {
+            font-family: "Walter Turncoat", serif;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: 300;
+            color: rgb(187, 71, 135);
+        }
+        #displayedImage {
+            display: none;
+            margin-top: 20px;
+            max-width: 300px;
+            margin: auto;
+        }
+
+        @keyframes shake {
+         0% { transform: translateX(0); }
+         25% { transform: translateX(-3px); }
+         50% { transform: translateX(3px); }
+         75% { transform: translateX(-3px); }
+         100% { transform: translateX(0); }
+        }
+
+        #submitButton:hover {
+         animation: shake 0.4s ease-in-out;
+        }
+
+        
+    </style>
+</head>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Walter+Turncoat&display=swap" rel="stylesheet">
+<body>
+
+    <h1>INITIALS COMPATIBILITY TEST </h1>
+    <p>enter your initials and see if you’re destined to be the perfect match! 🔮</p>
+
+    <!-- INPUT FIELDS FOR INITIALS -->
+    <input type="text" id="charInput1" maxlength="1" placeholder="A">
+    <input type="text" id="charInput2" maxlength="1" placeholder="B">
+
+    <!-- BUTTON TO CALCULATE COMPATIBILITY -->
+    <button onclick="displayImage()" id="submitButton">˗ˋˏ❤︎ˎˊ˗</button>
+
+    <!-- RESULT MESSAGE -->
+    <div id="result"></div>
+
+    <!-- IMAGE TO DISPLAY -->
+    <img id="displayedImage" src="" alt="Displayed Image">
+
+    <!-- SCRIPT -->
+    <script>
+        function displayImage() {
+            const imgElement = document.getElementById("displayedImage");
+            const resultText = document.getElementById("result");
+
+            // Get user input and convert to uppercase
+            const input1_letter = document.getElementById("charInput1").value.toUpperCase();
+            const input2_letter = document.getElementById("charInput2").value.toUpperCase();
+
+            // Error handling: Check if inputs are empty
+            if (!input1_letter || !input2_letter) {
+                alert("Please enter a single letter in both fields!");
+                imgElement.style.display = "none";
+                resultText.innerHTML = "";
+                return;
+            }
+
+            // Convert letters to ASCII numbers
+            const input1_number = input1_letter.charCodeAt(0);
+            const input2_number = input2_letter.charCodeAt(0);
+
+          
+            const total = (input1_number + input2_number) % 50;  
+
+            console.log(`Input1: ${input1_letter} (${input1_number}), Input2: ${input2_letter} (${input2_number}), Total: ${total}`);
+
+            let compatibility = "";
+            let percentage = 0;
+            let message = "";
+            let imgSrc = "";
+
+            // Compatibility conditions (0~99)
+            if (total <= 10) {
+    compatibility = "💖 perfect match!";
+    percentage = 100;
+    message = "destined for a perfect match! a fate to be together forever!";
+    imgSrc = "https://media2.giphy.com/media/c76IJLufpNwSULPk77/200w.gif?cid=6c09b952jhek4ynbqws7swvxy4un9tmex3pp9kc0vj977j4p&ep=v1_gifs_search&rid=200w.gif&ct=g";
+} else if (total <= 20) {
+    compatibility = "💞 almost perfect!";
+    percentage = 90;
+    message = "a match made in heaven! you complete each other perfectly!";
+    imgSrc = "https://media0.giphy.com/media/DyQrKMpqkAhNHZ1iWe/giphy.gif?cid=6c09b952fwu1ei31jnmuhobptdi5n1r9mvw3pus485odnakb&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g";
+} else if (total <= 30) {
+    compatibility = "😍 great chemistry!";
+    percentage = 80;
+    message = "together, you’re unstoppable!";
+    imgSrc = "https://media3.giphy.com/media/9q5dtmsHyfr4FleBqv/200w.gif?cid=6c09b95294f7mjpjsijfde861ju1clucjbd1i4nus85yqt86&ep=v1_gifs_search&rid=200w.gif&ct=g";
+} else if (total <= 40) {
+    compatibility = "😊 good match!";
+    percentage = 70;
+    message = "with a little effort, you can be the perfect couple!";
+    imgSrc = "https://i.pinimg.com/originals/95/2f/0d/952f0de143755805e43b0895deed7d10.gif";
+} else if (total <= 50) {
+    compatibility = "🤔 needs effort!";
+    percentage = 60;
+    message = "occasional conflicts may arise! communication is key!";
+    imgSrc = "https://media.tenor.com/P6FsFii7pnoAAAAM/hug-warm-hug.gif";
+} else if (total <= 60) {
+    compatibility = "⚖️ balanced yet different!";
+    percentage = 50;
+    message = "you may be different, but embracing those differences can create a strong bond!";
+    imgSrc = "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmxjMms1dGJmNHJydDlzZThndjZiZzN3dHR6bGM4NWd2cW5nMWh2MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/rbHQSU9TTXe4JEBYUY/giphy.gif";
+} else if (total <= 70) {
+    compatibility = "😅 a bit challenging!";
+    percentage = 40;
+    message = "it may take some time to truly understand each other.";
+    imgSrc = "https://media.tenor.com/WC0mv2OuqrAAAAAj/milk-and-mocha.gif";
+} else if (total <= 80) {
+    compatibility = "🌀 very different!";
+    percentage = 30;
+    message = "you come from different worlds! without effort, this could be difficult.";
+    imgSrc = "https://media0.giphy.com/media/3wG2GqlUeQoFtv8nFO/giphy.gif?cid=6c09b952irrvo562upo5nsa78ujy9s6p0uzq6ilvmt6o029e&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g";
+} else if (total <= 90) {
+    compatibility = "🚨 hard mode!";
+    percentage = 20;
+    message = "you are polar opposites! being together won’t be easy!";
+    imgSrc = "https://i.pinimg.com/originals/ef/ce/56/efce56eba8ffb9e07a7afc0751ad58ed.gif";
+} else {
+    compatibility = "💀 total opposites!";
+    percentage = 10;
+    message = "completely different! even being friends might be a challenge... 😂";
+    imgSrc = "https://i.pinimg.com/originals/21/82/d9/2182d962b5edd3957d6919c3bac8272e.gif";
+}
+
+
+            // Display the result
+            resultText.innerHTML = `<h2>${compatibility} (${percentage}%)</h2><p>${message}</p>`;
+            imgElement.src = imgSrc;
+            imgElement.style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
