@@ -40,6 +40,11 @@
             text-transform: capitalize;
             box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
         }
+        #charInput1::placeholder,
+        #charInput2::placeholder {
+        color: rgba(126, 70, 113, 0.331); /* 기존 색상보다 연한 버전 */
+        font-weight: 400; /* 더 가볍게 */
+}
 
         #submitButton {
             background-color: rgb(251, 247, 247);
@@ -66,9 +71,8 @@
 
         #displayedImage {
             display: none;
-            margin-top: 20px;
             max-width: 300px;
-            margin: auto;
+            margin:30px auto;
         }
 
         @keyframes shake {
@@ -91,14 +95,14 @@
         }
 
         h1, #result {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    text-align: center;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            text-align: center;
 }
 
 @media (max-width: 600px) {
     h1 {
-        font-size: 15px; 
+        font-size: 19px; 
     }
     
     #result h2 {
@@ -113,6 +117,9 @@
         width: 40px; 
         font-size: 12px;
     }
+    .break-on-mobile {
+    display: block;
+  }
 }
     </style>
 </head>
@@ -120,8 +127,7 @@
 <body>
 
     <h1>INITIALS COMPATIBILITY TEST</h1>
-    <p>Enter your initials and see if you’re destined to be the perfect match! 🔮</p>
-
+    <p>enter your initials <span class="break-on-mobile">and see if you’re destined to be</span> the perfect match! 🔮</p>
     <!-- INPUT FIELDS FOR INITIALS -->
     <input type="text" id="charInput1" maxlength="1" placeholder="A" oninput="validateInput(this)">
     <input type="text" id="charInput2" maxlength="1" placeholder="B" oninput="validateInput(this)">
@@ -182,56 +188,57 @@
             let imgSrc = "";
 
             if (total <= 10) {
-                compatibility = "💖 perfect match!";
-                percentage = 100;
-                message = "destined for a perfect match! a fate to be together forever!";
-                imgSrc = "https://media2.giphy.com/media/c76IJLufpNwSULPk77/200w.gif";
-            } else if (total <= 20) {
-                compatibility = "💞 almost perfect!";
-                percentage = 90;
-                message = "a match made in heaven! you complete each other perfectly!";
-                imgSrc = "https://media0.giphy.com/media/DyQrKMpqkAhNHZ1iWe/giphy.gif";
-            } else if (total <= 30) {
-                compatibility = "😍 great chemistry!";
-                percentage = 80;
-                message = "together, you’re unstoppable!";
-                imgSrc = "https://media3.giphy.com/media/9q5dtmsHyfr4FleBqv/200w.gif";
-            } else if (total <= 40) {
-                compatibility = "😊 good match!";
-                percentage = 70;
-                message = "with a little effort, you can be the perfect couple!";
-                imgSrc = "https://i.pinimg.com/originals/95/2f/0d/952f0de143755805e43b0895deed7d10.gif";
-            }  else if (total <= 50) {
-                compatibility = "🤔 needs effort!";
-                percentage = 60;
-                message = "occasional conflicts may arise! communication is key!";
-                imgSrc = "https://media.tenor.com/P6FsFii7pnoAAAAM/hug-warm-hug.gif";
-            } else if (total <= 60) {
-                compatibility = "⚖️ balanced yet different!";
-                percentage = 50;
-                message = "you may be different, but embracing those differences can create a strong bond!";
-                imgSrc = "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmxjMms1dGJmNHJydDlzZThndjZiZzN3dHR6bGM4NWd2cW5nMWh2MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/rbHQSU9TTXe4JEBYUY/giphy.gif";
-            } else if (total <= 70) {
-                compatibility = "😅 a bit challenging!";
-                percentage = 40;
-                message = "it may take some time to truly understand each other.";
-                imgSrc = "https://media.tenor.com/WC0mv2OuqrAAAAAj/milk-and-mocha.gif";
-            } else if (total <= 80) {
-                compatibility = "🌀 very different!";
-                percentage = 30;
-                message = "you come from different worlds! without effort, this could be difficult.";
-                imgSrc = "https://media0.giphy.com/media/3wG2GqlUeQoFtv8nFO/giphy.gif?cid=6c09b952irrvo562upo5nsa78ujy9s6p0uzq6ilvmt6o029e&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g";
-            } else if (total <= 90) {
+    compatibility = "💖 perfect match!";
+    percentage = 100;
+    message = `destined for a perfect match! <span class="break-on-mobile">a fate to be together forever!</span>`;
+    imgSrc = "https://media2.giphy.com/media/c76IJLufpNwSULPk77/200w.gif";
+} else if (total <= 20) {
+    compatibility = "💞 almost perfect!";
+    percentage = 90;
+    message = `a match made in heaven! <span class="break-on-mobile">you complete each other perfectly!</span>`;
+    imgSrc = "https://media0.giphy.com/media/DyQrKMpqkAhNHZ1iWe/giphy.gif";
+} else if (total <= 30) {
+    compatibility = "😍 great chemistry!";
+    percentage = 80;
+    message = `together, <span class="break-on-mobile">you’re unstoppable!</span>`;
+    imgSrc = "https://media3.giphy.com/media/9q5dtmsHyfr4FleBqv/200w.gif";
+} else if (total <= 40) {
+    compatibility = "😊 good match!";
+    percentage = 70;
+    message = `with a little effort, <span class="break-on-mobile">you can be the perfect couple!</span>`;
+    imgSrc = "https://i.pinimg.com/originals/95/2f/0d/952f0de143755805e43b0895deed7d10.gif";
+} else if (total <= 50) {
+    compatibility = "🤔 needs effort!";
+    percentage = 60;
+    message = `occasional conflicts may arise! <span class="break-on-mobile">communication is key!</span>`;
+    imgSrc = "https://media.tenor.com/P6FsFii7pnoAAAAM/hug-warm-hug.gif";
+} else if (total <= 60) {
+    compatibility = "⚖️ balanced yet different!";
+    percentage = 50;
+    message = `you may be different, <span class="break-on-mobile">but embracing those differences can create a strong bond!</span>`;
+    imgSrc = "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmxjMms1dGJmNHJydDlzZThndjZiZzN3dHR6bGM4NWd2cW5nMWh2MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/rbHQSU9TTXe4JEBYUY/giphy.gif";
+} else if (total <= 70) {
+    compatibility = "😅 a bit challenging!";
+    percentage = 40;
+    message = `it may take some time <span class="break-on-mobile">to truly understand each other.</span>`;
+    imgSrc = "https://media.tenor.com/WC0mv2OuqrAAAAAj/milk-and-mocha.gif";
+} else if (total <= 80) {
+    compatibility = "🌀 very different!";
+    percentage = 30;
+    message = `you come from different worlds! <span class="break-on-mobile">without effort, this could be difficult.</span>`;
+    imgSrc = "https://media0.giphy.com/media/3wG2GqlUeQoFtv8nFO/giphy.gif?cid=6c09b952irrvo562upo5nsa78ujy9s6p0uzq6ilvmt6o029e&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g";
+} else if (total <= 90) {
     compatibility = "🚨 hard mode!";
     percentage = 20;
-    message = "you are polar opposites! being together won’t be easy!";
+    message = `you are polar opposites! <span class="break-on-mobile">being together won’t be easy!</span>`;
     imgSrc = "https://i.pinimg.com/originals/ef/ce/56/efce56eba8ffb9e07a7afc0751ad58ed.gif";
 } else {
-                compatibility = "💀 total opposites!";
-                percentage = 10;
-                message = "completely different! even being friends might be a challenge... 😂";
-                imgSrc = "https://i.pinimg.com/originals/21/82/d9/2182d962b5edd3957d6919c3bac8272e.gif";
-            }
+    compatibility = "💀 total opposites!";
+    percentage = 10;
+    message = `completely different! <span class="break-on-mobile">even being friends might be a challenge... 😂</span>`;
+    imgSrc = "https://i.pinimg.com/originals/21/82/d9/2182d962b5edd3957d6919c3bac8272e.gif";
+}
+
 
             
 
