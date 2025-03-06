@@ -89,6 +89,31 @@
             display: none;
             margin-top: 10px;
         }
+
+        h1, #result {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 11px; 
+    }
+    
+    #result h2 {
+        font-size: 10px; 
+    }
+
+    #result p {
+        font-size: 9px; 
+    }
+
+    #charInput1, #charInput2 {
+        width: 40px; 
+        font-size: 8px;
+    }
+}
     </style>
 </head>
 
@@ -207,6 +232,8 @@
                 message = "completely different! even being friends might be a challenge... 😂";
                 imgSrc = "https://i.pinimg.com/originals/21/82/d9/2182d962b5edd3957d6919c3bac8272e.gif";
             }
+
+            
 
             // Display the result
             resultText.innerHTML = `<h2>${compatibility} (${percentage}%)</h2><p>${message}</p>`;
