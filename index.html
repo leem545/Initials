@@ -10,7 +10,7 @@
     <style>
         body {
             text-align: center;
-            margin-top: 150px;
+            margin-top:150px;
             background-color: rgba(255, 192, 203, 0.795);
         }
 
@@ -42,8 +42,8 @@
         }
         #charInput1::placeholder,
         #charInput2::placeholder {
-        color: rgba(126, 70, 113, 0.331); /* 기존 색상보다 연한 버전 */
-        font-weight: 400; /* 더 가볍게 */
+        color: rgba(126, 70, 113, 0.331); 
+        font-weight: 400; 
 }
 
         #submitButton {
@@ -101,21 +101,30 @@
 }
 
 @media (max-width: 600px) {
+
+    body {
+            margin-top:55px;
+        }
+
     h1 {
-        font-size: 19px; 
+        font-size: 20px; 
     }
-    
+    #result {
+
+        margin-top: 50px;
+
+    }
     #result h2 {
-        font-size: 14px; 
+        font-size: 18px; 
     }
 
     #result p {
-        font-size: 13px; 
+        font-size: 17px; 
     }
 
     #charInput1, #charInput2 {
         width: 40px; 
-        font-size: 12px;
+        font-size: 17px;
     }
     .break-on-mobile {
     display: block;
